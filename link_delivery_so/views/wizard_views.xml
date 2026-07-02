@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_link_delivery_so_wizard_form" model="ir.ui.view">
+        <field name="name">link.delivery.so.wizard.form</field>
+        <field name="model">link.delivery.so.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Link Delivery to Sales Order">
+                <group>
+                    <field name="sale_id"
+                           options="{'no_create': True, 'no_open': True}"/>
+                </group>
+                <footer>
+                    <button name="action_link" string="Link" type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_link_delivery_so" model="ir.actions.act_window">
+        <field name="name">Link Delivery to Sales Order</field>
+        <field name="res_model">link.delivery.so.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_view_types">list,form</field>
+    </record>
+</odoo>
